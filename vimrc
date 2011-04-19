@@ -35,6 +35,7 @@ set smartcase
 
 set gdefault
 
+
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 
 set gfn=Consolas:h10:cANSI
@@ -42,6 +43,7 @@ colorscheme desert
 
 nnoremap <F5> :GundoToggle<CR>
 nnoremap <F2> :NERDTreeToggle<CR>
+nnoremap ; :
 
 if has("vms")
   set nobackup		" do not keep a backup file, use versions instead
