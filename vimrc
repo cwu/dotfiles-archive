@@ -45,6 +45,12 @@ nnoremap <F5> :GundoToggle<CR>
 nnoremap <F2> :NERDTreeToggle<CR>
 nnoremap ; :
 
+" move between windows
+nnoremap <c-k> <c-w>k
+nnoremap <c-j> <c-w>j
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+
 if has("vms")
   set nobackup		" do not keep a backup file, use versions instead
 else
