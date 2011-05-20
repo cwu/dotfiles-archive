@@ -51,6 +51,10 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
+" easier jk navigation on wrapped lines
+nnoremap j gj
+nnoremap k gk
+
 if has("vms")
   set nobackup		" do not keep a backup file, use versions instead
 else
