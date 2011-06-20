@@ -1,25 +1,25 @@
 [user]
-	name = Chris Wu
+  name = Chris Wu
 [github]
-	user = cwu
+  user = cwu
 [apply]
-	whitespace = fix
+  whitespace = fix
 [color]
-	status = auto
-	branch = auto
-	diff = auto
+  status = auto
+  branch = auto
+  diff = auto
 [alias]
-	ci = commit
-	up = update
-	st = status
-	br = branch
-	co = checkout
-	di = diff
-	lg = log -p
+  ci = commit
+  up = update
+  st = status
+  br = branch
+  co = checkout
+  di = diff
+  lg = log -p
   gl = log --graph --decorate
   glp = log --graph --oneline --abbrev-commit --decorate
   rl = reflog
-	who = shortlog -s --
-	llog = log --date=local
-	ol = log --oneline
-	w = whatchanged
+  who = shortlog -s --
+  llog = log --date=local
+  ol = log --oneline
+  w = whatchanged
