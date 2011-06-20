@@ -1,59 +1,82 @@
-" When started as "evim", evim.vim will already have done these settings.
-if v:progname =~? "evim"
-  finish
-endif
+set nocompatible " Use vim rather than vi
 
-" Use Vim settings, rather than Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
-set nocompatible
+filetype off
 
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'gmarik/vundle'
 
+" My bundles
+Bundle 'pyflakes.vim'
+Bundle 'scrooloose/nerdtree'
+Bundle 'godlygeek/tabular'
+Bundle 'tpope/vim-fugitive'
+Bundle 'sjl/gundo.vim'
+Bundle 'scrooloose/syntastic'
+Bundle 'ervandew/supertab'
+Bundle 'wincent/Command-T'
+
+Bundle 'tpope/vim-rails'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'plasticboy/vim-markdown'
+Bundle 'tpope/vim-haml'
+Bundle 'tpope/vim-liquid'
+
+Bundle 'jade.vim'
+Bundle 'haskell.vim'
+Bundle 'vim-stylus'
+Bundle 'itspriddle/vim-jquery'
+
+syntax on
 set background=dark
-
-filetype plugin indent on
-set autoindent
-set smartindent
-set shiftwidth=2
-set ts=2
-set sts=2
 set number
-set expandtab
+
 set wildmenu
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1 
 
-let g:explVertical=1
-let g:explSplitRight=1
-let g:explStartRight=0
+set autoindent
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set shiftround
+set expandtab
 
-set ignorecase
-set smartcase
+nnoremap <F3> :NERDTreeToggle<CR>
+nnoremap <F4> :make<CR>
+nnoremap <F5> :Tabularize /
 
-set gdefault
+" For word wrap navigation
+nnoremap j gj
+nnoremap k gk
 
-
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-
-set gfn=Consolas:h10:cANSI
-colorscheme desert
-
-nnoremap <F5> :GundoToggle<CR>
-nnoremap <F2> :NERDTreeToggle<CR>
+" Don't need to press shift
 nnoremap ; :
 
-" move between windows
+" Split navigation
 nnoremap <c-k> <c-w>k
 nnoremap <c-j> <c-w>j
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
-" easier jk navigation on wrapped lines
-nnoremap j gj
-nnoremap k gk
+set ignorecase
+set smartcase
+
+set incsearch
+set gdefault
+
+set splitright
+set splitbelow
+set ruler
+set title
+
+filetype on
+filetype plugin indent on
+
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+
+command -nargs=1 Silent
+  \ | execute ':silent '.<q-args>
+  \ | execute ':redraw!'
 
 if has("vms")
   set nobackup		" do not keep a backup file, use versions instead
@@ -71,14 +94,8 @@ set incsearch		" do incremental searching
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
-" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
-" so that you can undo CTRL-U after inserting a line break.
-inoremap <C-U> <C-G>u<C-U>
-
 " In many terminal emulators the mouse works just fine, thus enable it.
-if has('mouse')
-  set mouse=a
-endif
+set mouse=a
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -106,25 +123,12 @@ if has("autocmd")
   " When editing a file, always jump to the last known cursor position.
   " Don't do it when the position is invalid or when inside an event handler
   " (happens when dropping a file on gvim).
-  " Also don't do it when the mark is in the first line, that is the default
-  " position when opening a file.
   autocmd BufReadPost *
-    \ if line("'\"") > 1 && line("'\"") <= line("$") |
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
     \   exe "normal! g`\"" |
     \ endif
 
   augroup END
 
-else
-
-  set autoindent		" always set autoindenting on
-
 endif " has("autocmd")
 
-" Convenient command to see the difference between the current buffer and the
-" file it was loaded from, thus the changes you made.
-" Only define it when not defined already.
-if !exists(":DiffOrig")
-  command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-		  \ | wincmd p | diffthis
-endif
