@@ -15,6 +15,7 @@ Bundle 'sjl/gundo.vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'ervandew/supertab'
 Bundle 'wincent/Command-T'
+Bundle 'fholgado/minibufexpl.vim'
 
 Bundle 'tpope/vim-rails'
 Bundle 'kchmck/vim-coffee-script'
@@ -132,3 +133,9 @@ if has("autocmd")
 
 endif " has("autocmd")
 
+
+let g:miniBufExplSplitBelow = 0
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapWindowNavArrows = 1
+let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplModSelTarget = 1 
