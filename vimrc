@@ -6,7 +6,7 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
 
-" My bundles
+" Utilities 
 Bundle 'pyflakes.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'godlygeek/tabular'
@@ -15,39 +15,61 @@ Bundle 'sjl/gundo.vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'ervandew/supertab'
 Bundle 'wincent/Command-T'
-Bundle 'fholgado/minibufexpl.vim'
 
+" Syntax highlighting
 Bundle 'tpope/vim-rails'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-liquid'
+Bundle 'itspriddle/vim-jquery'
+Bundle 'othree/html5.vim'
 
 Bundle 'jade.vim'
 Bundle 'haskell.vim'
 Bundle 'vim-stylus'
-Bundle 'itspriddle/vim-jquery'
+
+" Syntactic sugar
+Bundle 'Twinside/vim-haskellConceal'
 
 syntax on
 set background=dark
 set number
-
-set wildmenu
+set lazyredraw
+set ttyfast
+set nostartofline
+set modeline
+set encoding=utf-8
 
 set autoindent
+set smarttab
+set shiftround
+set expandtab
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
-set shiftround
-set expandtab
+
+set infercase
+
+set grepprg=ack
+set grepformat=%f:%l:%m
+
+set formatprg=par
+
+set splitright
+set splitbelow
+
+command! W :w
+set wildmenu
+set wildignore=*.o,*.obj,*.pyc,*.swc,*.DS_STORE,*.bkp
 
 nnoremap <F3> :NERDTreeToggle<CR>
 nnoremap <F4> :make<CR>
 nnoremap <F5> :Tabularize /
 
 " For word wrap navigation
-nnoremap j gj
-nnoremap k gk
+nmap j gj
+nmap k gk
 
 " Don't need to press shift
 nnoremap ; :
@@ -60,13 +82,9 @@ nnoremap <c-l> <c-w>l
 
 set ignorecase
 set smartcase
-
 set incsearch
 set gdefault
 
-set splitright
-set splitbelow
-set ruler
 set title
 
 filetype on
@@ -82,18 +100,19 @@ command -nargs=1 Silent
 if has("vms")
   set nobackup		" do not keep a backup file, use versions instead
 else
-  set backup		" keep a backup file
+  set backup		  " keep a backup file
 endif
 set history=50		" keep 50 lines of command line history
-set ruler		" show the cursor position all the time
-set showcmd		" display incomplete commands
-set incsearch		" do incremental searching
-
-" For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
-" let &guioptions = substitute(&guioptions, "t", "", "g")
+set ruler		      " show the cursor position all the time
+set showcmd		    " display incomplete commands
+set incsearch		  " do incremental searching
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
+
+" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
+" so that you can undo CTRL-U after inserting a line break.
+inoremap <C-U> <C-G>u<C-U>
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 set mouse=a
@@ -131,11 +150,19 @@ if has("autocmd")
 
   augroup END
 
+else
+
+  set autoindent		" always set autoindenting on
+
 endif " has("autocmd")
 
+" Convenient command to see the difference between the current buffer and the
+" file it was loaded from, thus the changes you made.
+command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
+	 	\ | wincmd p | diffthis
 
-let g:miniBufExplSplitBelow = 0
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1 
+" Syntastic
+" --- BUNDLE: http://github.com/scrooloose/syntastic.git
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list=1
+let g:syntastic_quiet_warnings=1
