@@ -28,6 +28,7 @@ Bundle 'othree/html5.vim'
 Bundle 'jade.vim'
 Bundle 'haskell.vim'
 Bundle 'vim-stylus'
+Bundle 'nginx.vim'
 
 " Syntactic sugar
 Bundle 'Twinside/vim-haskellConceal'
