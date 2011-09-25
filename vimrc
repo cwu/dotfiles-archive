@@ -30,9 +30,6 @@ Bundle 'haskell.vim'
 Bundle 'vim-stylus'
 Bundle 'nginx.vim'
 
-" Syntactic sugar
-Bundle 'Twinside/vim-haskellConceal'
-
 syntax on
 set background=dark
 set number
