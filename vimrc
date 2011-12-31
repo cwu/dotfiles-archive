@@ -9,21 +9,18 @@ Bundle 'gmarik/vundle'
 " Utilities 
 Bundle 'pyflakes.vim'
 Bundle 'scrooloose/nerdtree'
-Bundle 'godlygeek/tabular'
-Bundle 'tpope/vim-fugitive'
-Bundle 'sjl/gundo.vim'
 Bundle 'scrooloose/syntastic'
-Bundle 'ervandew/supertab'
+Bundle 'godlygeek/tabular'
+Bundle 'sjl/gundo.vim'
 Bundle 'wincent/Command-T'
 
 " Syntax highlighting
 Bundle 'tpope/vim-rails'
 Bundle 'kchmck/vim-coffee-script'
-Bundle 'plasticboy/vim-markdown'
 Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-liquid'
 Bundle 'itspriddle/vim-jquery'
 Bundle 'othree/html5.vim'
+Bundle 'tangledhelix/vim-octopress'
 
 Bundle 'jade.vim'
 Bundle 'haskell.vim'
@@ -164,3 +161,5 @@ command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_quiet_warnings=1
+
+autocmd BufNewFile,BufRead *.markdown setfiletype octopress 
