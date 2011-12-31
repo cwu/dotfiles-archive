@@ -1,14 +1,12 @@
 [user]
-  name = Chris Wu
+  name  = Chris Wu
 	email = chris.wu225@gmail.com
 [github]
   user = cwu
 [apply]
   whitespace = fix
 [color]
-  status = auto
-  branch = auto
-  diff = auto
+  ui = auto
 [alias]
   ci = commit
   up = update
@@ -17,8 +15,7 @@
   co = checkout
   di = diff
   lg = log -p
-  gl = log --graph --decorate
-  glp = log --graph --oneline --abbrev-commit --decorate
+  gl = log --graph --oneline --all --decorate
   rl = reflog
   who = shortlog -s --
   llog = log --date=local
