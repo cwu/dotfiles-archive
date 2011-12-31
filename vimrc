@@ -3,16 +3,17 @@ set nocompatible " Use vim rather than vi
 filetype off
 
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+call vundle#rc()  
 Bundle 'gmarik/vundle'
 
-" Utilities 
+" Utilities
 Bundle 'pyflakes.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'godlygeek/tabular'
 Bundle 'sjl/gundo.vim'
 Bundle 'wincent/Command-T'
+Bundle 'mileszs/ack.vim'
 
 " Syntax highlighting
 Bundle 'tpope/vim-rails'
@@ -55,6 +56,9 @@ set splitright
 set splitbelow
 
 command! W :w
+command! Q :q
+command! Wqa :wqa
+command! WQa :wqa
 set wildmenu
 set wildignore=*.o,*.obj,*.pyc,*.swc,*.DS_STORE,*.bkp
 
@@ -97,7 +101,7 @@ if has("vms")
 else
   set backup		  " keep a backup file
 endif
-set history=50		" keep 50 lines of command line history
+set history=100		" keep 50 lines of command line history
 set ruler		      " show the cursor position all the time
 set showcmd		    " display incomplete commands
 set incsearch		  " do incremental searching
@@ -162,4 +166,38 @@ let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_quiet_warnings=1
 
-autocmd BufNewFile,BufRead *.markdown setfiletype octopress 
+autocmd BufNewFile,BufRead *.markdown setfiletype octopress
+
+" Ack
+let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+
+" Set leader
+let mapleader = ","
+
+" Fix ' to ` so it jumps to column not just line
+nnoremap ' `
+
+" Extended matching for %
+runtime macros/matchit.vim
+
+" scroll around cursor at border of screen
+set scrolloff=3
+
+" Save tmp files in /tmp
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+
+" Toggle hilighting spaces and end of lines
+set listchars=tab:>-,trail:·,eol:$
+nmap <silent> <leader>s :set nolist!<CR>
+
+" Highlight trailing whitepsace
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+
+" use visual bell instead of audio
+set visualbell
