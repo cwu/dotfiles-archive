@@ -28,73 +28,11 @@ Bundle 'haskell.vim'
 Bundle 'vim-stylus'
 Bundle 'nginx.vim'
 
-syntax on
-set background=dark
-set number
-set lazyredraw
-set ttyfast
-set nostartofline
-set modeline
-set encoding=utf-8
-
-set autoindent
-set smarttab
-set shiftround
-set expandtab
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
-
-set infercase
-
-set grepprg=ack
-set grepformat=%f:%l:%m
-
-set formatprg=par
-
-set splitright
-set splitbelow
-
-command! W :w
-command! Q :q
-command! Wqa :wqa
-command! WQa :wqa
-set wildmenu
-set wildignore=*.o,*.obj,*.pyc,*.swc,*.DS_STORE,*.bkp
-
-nnoremap <F3> :NERDTreeToggle<CR>
-nnoremap <F4> :make<CR>
-nnoremap <F5> :Tabularize /
-
-" For word wrap navigation
-nmap j gj
-nmap k gk
-
-" Don't need to press shift
-nnoremap ; :
-
-" Split navigation
-nnoremap <c-k> <c-w>k
-nnoremap <c-j> <c-w>j
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
-
-set ignorecase
-set smartcase
-set incsearch
-set gdefault
-
-set title
-
 filetype on
 filetype plugin indent on
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
-
-command -nargs=1 Silent
-  \ | execute ':silent '.<q-args>
-  \ | execute ':redraw!'
 
 if has("vms")
   set nobackup		" do not keep a backup file, use versions instead
@@ -106,8 +44,6 @@ set ruler		      " show the cursor position all the time
 set showcmd		    " display incomplete commands
 set incsearch		  " do incremental searching
 
-" Don't use Ex mode, use Q for formatting
-map Q gq
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
@@ -115,13 +51,6 @@ inoremap <C-U> <C-G>u<C-U>
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 set mouse=a
-
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-if &t_Co > 2 || has("gui_running")
-  syntax on
-  set hlsearch
-endif
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
@@ -154,11 +83,6 @@ else
   set autoindent		" always set autoindenting on
 
 endif " has("autocmd")
-
-" Convenient command to see the difference between the current buffer and the
-" file it was loaded from, thus the changes you made.
-command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-	 	\ | wincmd p | diffthis
 
 " Syntastic
 " --- BUNDLE: http://github.com/scrooloose/syntastic.git
@@ -201,3 +125,69 @@ autocmd BufWinLeave * call clearmatches()
 
 " use visual bell instead of audio
 set visualbell
+
+" Mixbag of options
+syntax on
+set background=dark
+set number
+set lazyredraw
+set ttyfast
+set nostartofline
+set modeline
+set encoding=utf-8
+
+" Indenting rules
+set autoindent
+set smarttab
+set shiftround
+set expandtab
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+
+set infercase
+
+set grepprg=ack
+set grepformat=%f:%l:%m
+
+set formatprg=par
+
+set splitright
+set splitbelow
+
+" Typos for saving and quitting
+command! W :w
+command! Q :q
+command! Wqa :wqa
+command! WQa :wqa
+
+" Wildcard menu
+set wildmenu
+set wildignore=*.o,*.obj,*.pyc,*.swc,*.DS_STORE,*.bkp
+
+nnoremap <F3> :NERDTreeToggle<CR>
+nnoremap <F4> :make<CR>
+nnoremap <F5> :Tabularize /
+
+" For word wrap navigation
+nmap j gj
+nmap k gk
+
+" Don't need to press shift
+nnoremap ; :
+
+" Split navigation
+nnoremap <c-k> <c-w>k
+nnoremap <c-j> <c-w>j
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+
+" Search settings
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+set gdefault
+
+" Command line title
+set title
