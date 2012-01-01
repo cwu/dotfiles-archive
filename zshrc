@@ -2,7 +2,7 @@
 #           jdong's zshrc file v0.2.1 , based on:
 #		      mako's zshrc file, v0.1
 #
-# 
+#
 ######################################################################
 
 source /etc/profile
@@ -27,7 +27,7 @@ setopt ALL_EXPORT
 # Set/unset  shell options
 setopt   notify globdots pushdtohome cdablevars autolist #correct
 setopt   autocd recexact longlistjobs # autocorrect
-setopt   autoresume histignoredups pushdsilent 
+setopt   autoresume histignoredups pushdsilent
 setopt   autopushd pushdminus extendedglob rcquotes mailwarning
 unsetopt bgnice autoparamslash
 
@@ -138,7 +138,7 @@ zstyle ':completion:*::::' completer _expand _complete _ignored _approximate
 # allow one error for every three characters typed in approximate completer
 zstyle -e ':completion:*:approximate:*' max-errors \
     'reply=( $(( ($#PREFIX+$#SUFFIX)/2 )) numeric )'
-    
+
 # insert all expansions for expand completer
 zstyle ':completion:*:expand:*' tag-order all-expansions
 
@@ -165,14 +165,14 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 
 #zstyle ':completion:*:processes' command 'ps ax -o pid,s,nice,stime,args | sed "/ps/d"'
 zstyle ':completion:*:*:kill:*:processes' command 'ps --forest -A -o pid,user,cmd'
-zstyle ':completion:*:processes-names' command 'ps axho command' 
+zstyle ':completion:*:processes-names' command 'ps axho command'
 #zstyle ':completion:*:urls' local 'www' '/var/www/htdocs' 'public_html'
 #
 #NEW completion:
 # 1. All /etc/hosts hostnames are in autocomplete
 # 2. If you have a comment in /etc/hosts like #%foobar.domain,
 #    then foobar.domain will show up in autocomplete!
-zstyle ':completion:*' hosts $(awk '/^[^#]/ {print $2 $3" "$4" "$5}' /etc/hosts | grep -v ip6- && grep "^#%" /etc/hosts | awk -F% '{print $2}') 
+zstyle ':completion:*' hosts $(awk '/^[^#]/ {print $2 $3" "$4" "$5}' /etc/hosts | grep -v ip6- && grep "^#%" /etc/hosts | awk -F% '{print $2}')
 # Filename suffixes to ignore during completion (except after rm command)
 zstyle ':completion:*:*:(^rm):*:*files' ignored-patterns '*?.o' '*?.c~' \
     '*?.old' '*?.pro'
@@ -199,14 +199,26 @@ zstyle ':completion:*:ssh:*' group-order \
    hosts-domain hosts-host users hosts-ipaddr
 zstyle '*' single-ignored show
 
-unsetopt extendedglob
-source $HOME/.nvm/nvm.sh
+# VIM Completion
+zstyle ':completion:*:*:vim:*:*files' ignored-patterns '*.o'
 
+unsetopt extendedglob
+
+# apt-get helper
 . /etc/zsh_command_not_found
+
+# convenient pem file variable
 PEM=/home/chris/Dropbox/aws/aws-freekey.pem
 
+# simple git alias
 alias gf='git fetch'
 alias gr='git rebase origin/master master'
 alias gp='git push origin master'
 alias fabd='fab -i $PEM deploy'
+
+# nvm
+source $HOME/.nvm/nvm.sh
+
+# rvm
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
+
