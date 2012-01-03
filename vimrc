@@ -3,7 +3,7 @@ set nocompatible " Use vim rather than vi
 filetype off
 
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()  
+call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " Utilities
@@ -14,6 +14,7 @@ Bundle 'godlygeek/tabular'
 Bundle 'sjl/gundo.vim'
 Bundle 'wincent/Command-T'
 Bundle 'mileszs/ack.vim'
+Bundle 'ervandew/supertab'
 
 " Syntax highlighting
 Bundle 'tpope/vim-rails'
@@ -89,8 +90,6 @@ endif " has("autocmd")
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_quiet_warnings=1
-
-autocmd BufNewFile,BufRead *.markdown setfiletype octopress
 
 " Ack
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
@@ -192,6 +191,13 @@ set gdefault
 " Command line title
 set title
 
+" Autocomplete
+set completeopt=menuone,longest,preview
+
+" Super tab
+au FileType python set omnifunc=pythoncomplete#Complete
+let g:SuperTabDefaultCompletionType = "context"
+
 " Add the virtualenv's site-packages to vim path
 py << EOF
 import os.path
@@ -203,3 +209,5 @@ if 'VIRTUAL_ENV' in os.environ:
   activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
   execfile(activate_this, dict(__file__=activate_this))
 EOF
+
+autocmd BufNewFile,BufRead *.markdown setfiletype octopress
