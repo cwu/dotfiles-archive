@@ -1,9 +1,13 @@
-VIM_DIR    = $(HOME)/.vim
-VIM_TMP    = $(HOME)/.vim-tmp
-VUNDLE_DIR = $(VIM_DIR)/bundle/vundle
+VIM_DIR      = $(HOME)/.vim
+VIM_TMP      = $(HOME)/.vim-tmp
+VUNDLE_DIR   = $(VIM_DIR)/bundle/vundle
+
+AUTOJUMP_GIT = https://github.com/joelthelion/autojump.git
+AUTOJUMP_DIR = /tmp/autojump
 
 all: submodules symlinks vundle
 	@echo "Now just run vim and type ':BundleInstall'"
+	@echo "To install autojump run \`make autojump'"
 
 ensure_vim_dir:
 	@mkdir -p $(VIM_DIR)
@@ -33,4 +37,6 @@ submodules:
 	@git submodule update
 
 autojump: submodules
-	@$(CURDIR)/autojump/install.zsh
+	@git clone $(AUTOJUMP_GIT) $(AUTOJUMP_DIR)
+	@cd $(AUTOJUMP_DIR) && ./install.zsh
+	@rm -r $(AUTOJUMP_DIR)
