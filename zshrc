@@ -42,7 +42,7 @@ alias gp='git push origin master'
 alias hp='git push heroku master'
 alias fabd='fab -i $PEM deploy'
 
-EDITOR=vim
+export EDITOR=vim
 
 # nvm
 source $HOME/.nvm/nvm.sh
