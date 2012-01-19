@@ -12,9 +12,11 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'godlygeek/tabular'
 Bundle 'sjl/gundo.vim'
-Bundle 'wincent/Command-T'
+Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'ervandew/supertab'
+Bundle 'mattn/zencoding-vim'
+Bundle 'msanders/snipmate.vim'
 
 " Syntax highlighting
 Bundle 'tpope/vim-rails'
@@ -162,7 +164,7 @@ command! WQa :wqa
 
 " Wildcard menu
 set wildmenu
-set wildignore=*.o,*.obj,*.pyc,*.swc,*.DS_STORE,*.bkp
+set wildignore+=*.o,*.obj,*.pyc,*.swc,*.DS_STORE,*.bkp
 
 nnoremap <F3> :NERDTreeToggle<CR>
 nnoremap <F4> :make<CR>
@@ -192,7 +194,7 @@ set gdefault
 set title
 
 " Autocomplete
-set completeopt=menuone,longest,preview
+"set completeopt=menuone,longest,preview
 
 " Super tab
 au FileType python set omnifunc=pythoncomplete#Complete
@@ -211,3 +213,13 @@ if 'VIRTUAL_ENV' in os.environ:
 EOF
 
 autocmd BufNewFile,BufRead *.markdown setfiletype octopress
+autocmd BufNewFile,BufRead Gemfile setfiletype ruby
+
+nmap <Leader>t :CtrlP<CR>
+
+" ctrl-p ignore
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|\.hg$\|\.svn$',
+  \ 'file': '\.exe$\|\.so$\|\.dll$',
+  \ 'link': 'bad_symbolic_link',
+  \ }
