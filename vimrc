@@ -25,6 +25,7 @@ Bundle 'tpope/vim-haml'
 Bundle 'itspriddle/vim-jquery'
 Bundle 'othree/html5.vim'
 Bundle 'tangledhelix/vim-octopress'
+Bundle 'vim-pandoc/vim-pandoc.git'
 
 Bundle 'jade.vim'
 Bundle 'haskell.vim'
@@ -199,6 +200,9 @@ set title
 " Super tab
 au FileType python set omnifunc=pythoncomplete#Complete
 let g:SuperTabDefaultCompletionType = "context"
+
+" No folding please
+set nofoldenable
 
 " Add the virtualenv's site-packages to vim path
 py << EOF
