@@ -54,6 +54,7 @@ alias gp='git push origin master'
 alias hp='git push heroku master'
 alias fabd='fab -i $PEM deploy'
 
+# Set editor to vim because nano is lame
 export EDITOR=vim
 
 # nvm
@@ -61,3 +62,6 @@ source $HOME/.nvm/nvm.sh
 
 # rvm
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
+
+# Add my paths to PATH
+export PATH="$HOME/.cabal/bin:$HOME/bin:$PATH"
