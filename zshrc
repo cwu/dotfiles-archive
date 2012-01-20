@@ -9,9 +9,6 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
 
-# Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
-
 # Comment this out to disable weekly auto-update checks
 # DISABLE_AUTO_UPDATE="true"
 
@@ -22,7 +19,6 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(
-  bundler
   command-not-found
   debian
   django
@@ -32,7 +28,6 @@ plugins=(
   npm
   nyan
   pip
-  rails
   rails3
   rake
   redis-cli
