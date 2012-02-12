@@ -217,6 +217,7 @@ if 'VIRTUAL_ENV' in os.environ:
 EOF
 
 autocmd BufNewFile,BufRead *.markdown setfiletype octopress
+autocmd BufNewFile,BufRead *.pandoc setfiletype octopress
 autocmd BufNewFile,BufRead Gemfile setfiletype ruby
 
 nmap <Leader>t :CtrlP<CR>
