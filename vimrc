@@ -113,10 +113,6 @@ set scrolloff=3
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
-" Toggle hilighting spaces and end of lines
-set listchars=tab:>-,trail:·,eol:$
-nmap <silent> <leader>s :set nolist!<CR>
-
 " Highlight trailing whitepsace
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
@@ -157,11 +153,20 @@ set formatprg=par
 set splitright
 set splitbelow
 
+set tildeop
+
+" Toggle hilighting spaces and end of lines
+set listchars=tab:>-,trail:·,eol:$
+nmap <silent> <leader>s :set nolist!<CR>
+
 " Typos for saving and quitting
 command! W :w
 command! Q :q
 command! Wqa :wqa
 command! WQa :wqa
+
+" Ctags A-] to open in vertical split
+map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " Wildcard menu
 set wildmenu
