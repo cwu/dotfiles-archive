@@ -44,6 +44,9 @@ source $ZSH/oh-my-zsh.sh
 # I don't like share history since I have terminals for specific reptitive tasks
 unsetopt SHARE_HISTORY
 
+# Damn autocorrect
+unsetopt correct_all
+
 # convenient pem file variable
 PEM=/home/chris/Dropbox/aws/aws-freekey.pem
 
@@ -64,4 +67,4 @@ source $HOME/.nvm/nvm.sh
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
 
 # Add my paths to PATH
-export PATH="$HOME/.cabal/bin:$HOME/bin:$PATH"
+export PATH="$HOME/.cabal/bin:$HOME/bin:/usr/local/ghc/bin:/usr/local/haskell-platform/bin:$PATH"

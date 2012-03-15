@@ -227,6 +227,9 @@ autocmd BufNewFile,BufRead Gemfile setfiletype ruby
 
 nmap <Leader>t :CtrlP<CR>
 
+" Disable auto commenting
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
 " ctrl-p ignore
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git$\|\.hg$\|\.svn$',
