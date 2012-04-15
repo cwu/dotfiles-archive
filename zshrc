@@ -56,9 +56,13 @@ alias gr='git rebase origin/master master'
 alias gp='git push origin master'
 alias hp='git push heroku master'
 alias fabd='fab -i $PEM deploy'
+alias vi='vim'
 
 # Set editor to vim because nano is lame
 export EDITOR=vim
+
+# vim autocomplete
+zstyle ':completion:*:*:vim:*:*files' ignored-patterns '*.(o|hi)'
 
 # nvm
 source $HOME/.nvm/nvm.sh
@@ -68,3 +72,5 @@ source $HOME/.nvm/nvm.sh
 
 # Add my paths to PATH
 export PATH="$HOME/.cabal/bin:$HOME/bin:/usr/local/ghc/bin:/usr/local/haskell-platform/bin:$PATH"
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

@@ -9,7 +9,7 @@ Bundle 'gmarik/vundle'
 " Utilities
 Bundle 'pyflakes.vim'
 Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
+"Bundle 'scrooloose/syntastic'
 Bundle 'godlygeek/tabular'
 Bundle 'sjl/gundo.vim'
 Bundle 'kien/ctrlp.vim'
@@ -170,7 +170,7 @@ map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " Wildcard menu
 set wildmenu
-set wildignore+=*.o,*.obj,*.pyc,*.swc,*.DS_STORE,*.bkp
+set wildignore+=*.o,*.obj,*.pyc,*.swc,*.DS_STORE,*.bkp,*.hi
 
 nnoremap <F3> :NERDTreeToggle<CR>
 nnoremap <F4> :make<CR>
@@ -233,6 +233,11 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " ctrl-p ignore
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git$\|\.hg$\|\.svn$',
-  \ 'file': '\.exe$\|\.so$\|\.dll$',
+  \ 'file': '\.exe$\|\.so$\|\.dll\|\.hi|\.o$',
   \ 'link': 'bad_symbolic_link',
   \ }
+
+" NERDTree Ignores.
+let NERDTreeIgnore = ['\~$', '\.hi$', '\.o$']
+
+set clipboard=default
