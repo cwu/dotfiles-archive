@@ -8,6 +8,8 @@ NVM_DIR = $(HOME)/.nvm
 OH_MY_ZSH_GIT = https://github.com/robbyrussell/oh-my-zsh.git
 OH_MY_ZSH_DIR = $(HOME)/.oh-my-zsh
 
+XMONAD_DIR = $(HOME)/.xmonad
+
 AUTOJUMP_GIT = https://github.com/joelthelion/autojump.git
 AUTOJUMP_DIR = /tmp/autojump
 
@@ -34,6 +36,8 @@ symlinks: ensure_vim_dir oh_my_zsh nvm
 	ln -fs $(CURDIR)/gitconfig     $(HOME)/.gitconfig
 	ln -fs $(CURDIR)/ackrc         $(HOME)/.ackrc
 	ln -fs $(CURDIR)/zshrc         $(HOME)/.zshrc
+	@mkdir -p $(XMONAD_DIR)
+	ln -fs $(CURDIR)/xmonad.hs     $(XMONAD_DIR)/xmonad.hs
 	@ls -l $(VIM_DIR)/ftplugin || ln -fs $(CURDIR)/vim/ftplugin $(VIM_DIR)/ftplugin
 	@ls -l $(VIM_DIR)/snippets || ln -fs $(CURDIR)/vim/snippets $(VIM_DIR)/snippets
 
