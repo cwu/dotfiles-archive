@@ -62,7 +62,7 @@ alias vi='vim'
 export EDITOR=vim
 
 # vim autocomplete
-zstyle ':completion:*:*:vim:*:*files' ignored-patterns '*.(o|hi)'
+zstyle ':completion:*:*:vim:*:*files' ignored-patterns '*.(o|hi|errors)'
 
 # nvm
 source $HOME/.nvm/nvm.sh
